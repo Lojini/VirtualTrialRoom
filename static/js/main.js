@@ -1,10 +1,24 @@
 
+
 "use strict";
 
 (function ($) {
   $(window).on("load", function () {
     $(".loader").fadeOut();
     $("#preloder").delay(200).fadeOut("slow");
+
+    /*------------------
+            Gallery filter
+        --------------------*/
+    $(".filter__controls li").on("click", function () {
+      $(".filter__controls li").removeClass("active");
+      $(this).addClass("active");
+    });
+    if ($(".product__filter").length > 0) {
+      var containerEl = document.querySelector(".product__filter");
+      var mixer = mixitup(containerEl);
+    }
+  });
 
   $(".set-bg").each(function () {
     var bg = $(this).data("setbg");
@@ -16,6 +30,11 @@
     allowParentLinks: true,
   });
 
+
+
+  /*-----------------------
+        Hero Slider
+    ------------------------*/
   $(".hero__slider").owlCarousel({
     loop: true,
     margin: 0,
@@ -33,6 +52,11 @@
     autoplay: false,
   });
 
+  /*--------------------------
+        Select
+    ----------------------------*/
+  $("select").niceSelect();
+
 
   var modal = document.getElementById("myModal");
 
@@ -43,6 +67,7 @@
   btn.onclick = function () {
     modal.style.display = "block";
   };
+
   span.onclick = function () {
     modal.style.display = "none";
   };
@@ -65,8 +90,8 @@
                 $btn_next = $progressWizard.find('.next-step'),
                 $tab_toggle = $progressWizard.find('[data-toggle="tab"]'),
                 $tooltips = $progressWizard.find('[data-toggle="tab"][title]');
-            $tooltips.tooltip();
 
+            $tooltips.tooltip();
 
             $tab_toggle.on('show.bs.tab', function(e) {
                 var $target = $(e.target);
@@ -78,7 +103,6 @@
                     return false;
                 }
             });
-
             $btn_next.on('click', function() {
                 $tab_active = $progressWizard.find('.active');
 
