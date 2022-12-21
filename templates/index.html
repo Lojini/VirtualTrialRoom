@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fashion Fit</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+  </head>
+
+  <body>
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+      <div id="mobile-menu-wrap"></div>
+      <div class="offcanvas__text">
+        <p>Try out your favourite cloth virtually</p>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="header__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-7">
+              <div class="header__top__left">
+                <p>Try out your favourite cloth virtually</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="header__logo">
+          <img src="static/img/logo.png" alt="" />
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero__slider owl-carousel">
+        <div class="hero__items set-bg" data-setbg="static/img/hero/hero-1.jpg">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-5 col-lg-7 col-md-8">
+                <div class="hero__text">
+                  <h6>Cloth Collections</h6>
+                  <h2>Virtual Trial Room</h2>
+                  <p>
+                    Choose your favourite cloth and upload your image to see how
+                    it fits on you.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="product spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="filter__controls">
+              <li class="active">Latest Clothings</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-lg-12"
+            style="padding-bottom: 30px; display: flex; justify-content: right">
+            <button id="myBtn" href="#" class="primary-btn">+ Add Cloth</button>
+          </div>
+        </div>
+        <div class="row product__filter">
+           {% for hist in hists %}
+          <div
+            class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix"
+          >
+            <div class="product__item">
+
+
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="{{url_for('static', filename='img/product/')}}{{hist}}"
+              ></div>
+              <div class="product__item__text">
+                <a href="{{url_for('product_page',product_name=hist)}}" class="primary-btn">Fit On</a>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+        </div>
+
+      </div>
+    </section>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form action = "/upload" method = "post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+          <button class="primary-btn" type = "submit" >Upload</button>
+    </form>
+      </div>
+    </div>
+
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.nicescroll.min.js"></script>
+    <script src="static/js/owl.carousel.min.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>
