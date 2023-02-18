@@ -6,9 +6,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
+    return render_template('login.html')
+
+
+@app.route('/home')
+def home_page():
     hists = os.listdir('static/img/product')
-    hists = [ file for file in hists]
-    return render_template('index.html', hists=hists)
+    hists = [file for file in hists]
+    return render_template("index.html", hists=hists)
 
 
 @app.route('/product')
