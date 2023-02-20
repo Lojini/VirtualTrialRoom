@@ -88,16 +88,8 @@
   };
 
   $(document).ready(function() {
-        chooseCategory("Men","Shirt")
-        function chooseCategory(gender,category){
-             $.get('/productsByCategory', {Gender:gender,Category:category}, function (data, textStatus, jqXHR) {
-               $('#product__filter').style.display="none";
-               for (var i = 0; i < data.length; i++) {
-                  $('#product__filter').html("<h1>"+data[i]+"</h1>");
-               }
 
-             });
-            }
+
             function triggerClick(elem) {
                 $(elem).click();
             }
