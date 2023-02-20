@@ -13,7 +13,17 @@ def main():
 def home_page():
     hists = os.listdir('static/img/product')
     hists = [file for file in hists]
+    print(hists)
     return render_template("index.html", hists=hists)
+
+
+@app.route("/productsByCategory", methods=["GET"])
+def post():
+    gender = request.args["Gender"]
+    category = request.args["Category"]
+    hists = os.listdir('static/img/product/'+gender+"/"+category)
+    hists = [file for file in hists]
+    return hists
 
 
 @app.route('/product')
@@ -25,9 +35,12 @@ def product_page():
 @app.route('/upload', methods=['POST'])
 def success():
     if request.method == 'POST':
+        print(request)
+        gender = request.form['gender']
+        category = request.form['category']
         f = request.files['file']
-        f.save(os.path.join("static/img/product/", f.filename))
-        return redirect(url_for('main'))
+        f.save(os.path.join("static/img/product/", gender, category, f.filename))
+        return redirect(url_for('home_page'))
 
 
 if __name__ == '__main__':

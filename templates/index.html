@@ -86,28 +86,30 @@
           <div
             class="col-lg-12"
             style="padding-bottom: 30px; display: flex; justify-content: right">
-            <button id="myBtn" href="#" class="primary-btn">+ Add Cloth</button>
+            <button id="myBtn" class="primary-btn">+ Add Cloth</button>
           </div>
         </div>
-        <div class="row product__filter">
-           {% for hist in hists %}
-          <div
-            class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix"
-          >
-            <div class="product__item">
+        <div class="row">
+          <div class="col-lg-12 center">
+            <ul class="filter__controls">
+              <li  class="active" name="Men" >Men</li>
+              <li name="Women">Women</li>
+            </ul>
+          </div>
+        </div>
 
+         <div id="Men" class="w3-container w3-border city">
+            <button  class="btn active" onclick="chooseCategory('Men','Shirt')">Shirt</button>
+            <button class="btn" onclick="chooseCategory('Men','Trouser')">Trouser</button>
+         </div>
 
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="{{url_for('static', filename='img/product/')}}{{hist}}"
-              ></div>
-              <div class="product__item__text">
-                <a href="{{url_for('product_page',product_name=hist)}}" class="primary-btn">Fit On</a>
-              </div>
+          <div id="Women" class="w3-container w3-border city" style="display:none">
+           <button  class="btn active"  onclick="chooseCategory('Women','Top')">Top</button>
+            <button class="btn"  onclick="chooseCategory('Women','Skirt')">Skirt</button>
+             <button class="btn"  onclick="chooseCategory('Women','Blouse')">Blouse</button>
+          </div>
+            <div id="product__filter">
             </div>
-          </div>
-            {% endfor %}
-        </div>
 
       </div>
     </section>
@@ -116,13 +118,17 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <form action = "/upload" method = "post" enctype="multipart/form-data">
-        <input type="file" name="file" />
+         <input type="text" name="gender" placeholder="Gender"/>
+          <input type="text" name="category" placeholder="Category" />
+           <input type="file" name="file" />
           <button class="primary-btn" type = "submit" >Upload</button>
     </form>
       </div>
     </div>
     <!-- Product Section End -->
+    <script>
 
+    </script>
     <!-- Js Plugins -->
     <script src="static/js/jquery-3.3.1.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>

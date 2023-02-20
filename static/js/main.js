@@ -13,7 +13,17 @@
     $(".filter__controls li").on("click", function () {
       $(".filter__controls li").removeClass("active");
       $(this).addClass("active");
-    });
+
+       var i, x;
+        x = document.getElementsByClassName("city");
+       for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";
+       }
+        var id = $(this).attr('name');
+       document.getElementById(id).style.display = "block";
+     });
+
+
     if ($(".product__filter").length > 0) {
       var containerEl = document.querySelector(".product__filter");
       var mixer = mixitup(containerEl);
@@ -55,7 +65,7 @@
   /*--------------------------
         Select
     ----------------------------*/
-  $("select").niceSelect();
+
 
 
   var modal = document.getElementById("myModal");
@@ -64,10 +74,9 @@
 
   var span = document.getElementsByClassName("close")[0];
 
-  btn.onclick = function () {
-    modal.style.display = "block";
-  };
-
+ $('#myBtn').on('click', function() {
+    $('#myModal').show();
+});
   span.onclick = function () {
     modal.style.display = "none";
   };
@@ -79,6 +88,16 @@
   };
 
   $(document).ready(function() {
+        chooseCategory("Men","Shirt")
+        function chooseCategory(gender,category){
+             $.get('/productsByCategory', {Gender:gender,Category:category}, function (data, textStatus, jqXHR) {
+               $('#product__filter').style.display="none";
+               for (var i = 0; i < data.length; i++) {
+                  $('#product__filter').html("<h1>"+data[i]+"</h1>");
+               }
+
+             });
+            }
             function triggerClick(elem) {
                 $(elem).click();
             }
