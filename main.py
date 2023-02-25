@@ -29,7 +29,9 @@ def post():
 @app.route('/product')
 def product_page():
     product_name = request.args["product_name"]
-    return render_template("shop-details.html", product_name=product_name)
+    gender = request.args["gender"]
+    category = request.args["category"]
+    return render_template("shop-details.html", product_name=product_name, gender=gender, category=category)
 
 
 @app.route('/upload', methods=['POST'])

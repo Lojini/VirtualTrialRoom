@@ -2399,8 +2399,7 @@ ol {
 }
 
 .btn.active {
-  background-color: #666;
-  color: white;
+  background-color: #ccc;
 }
 }
 
