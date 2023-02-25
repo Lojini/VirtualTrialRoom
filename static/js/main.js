@@ -20,10 +20,8 @@
          x[i].style.display = "none";
        }
 
-       tablinks = document.getElementsByClassName("tablinks");
-       for (i = 0; i < tablinks.length; i++) {
-         tablinks[i].className = tablinks[i].className.replace(" active", "");
-       }
+
+
         var id = $(this).attr('name');
         if(id =='Men'){
         chooseCategory('Men','Shirt')
